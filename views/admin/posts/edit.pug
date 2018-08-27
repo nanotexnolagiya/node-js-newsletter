@@ -1,0 +1,66 @@
+extends ../layout/base
+
+append vars
+    - title = 'Edit Post'
+block content
+    .row
+        .col-md-8.offset-md-2
+            form#editPost.card(action="/admin/posts/edit", method="post", enctype="multipart/form-data")
+                .card-header
+                    h3.card-title #{title}
+                .card-body
+                    .row
+                        .col-12
+                            .form-group
+                                label.form-label
+                                    | Title
+                                    span.form-required *
+                                input.form-control(type="text", name="title" value=post.title)
+                                .invalid-feedback
+                            .form-group
+                                .form-label
+                                    | Content
+                                .editable.form-control#content
+                                    | #{post.content}
+                                .invalid-feedback
+                            .form-group
+                                label.form-label
+                                    | Categories
+                                    span.form-required *
+                                select#selectCategory.custom-select.form-control(name="category")
+                                    each category, index in categories
+                                        - if (post.category == category._id.toString()){
+                                            option(value=category._id, selected="") #{category.title}
+                                        - }else{
+                                            option(value=category._id) #{category.title}
+                                        - }
+                            .form-group
+                                label.form-label Select Tags
+                                #tags.selectgroup.selectgroup-pills
+                                    if post.tags
+                                        if tags
+                                            each tag, index in tags
+                                                - if(tag.category.toString() == post.category.toString()) {
+                                                    - var attr = ''
+                                                    each post_tag, index in post.tags
+                                                        - if(tag._id.toString() == post_tag.toString()) {
+                                                            - attr = 'checked'
+                                                        - }
+                                                    
+                                                    label.selectgroup-item(for="")
+                                                        - if(attr.length > 1) {
+                                                            input.selectgroup-input(type="checkbox", name="tags" value=tag._id, checked)
+                                                        - }else{
+                                                            input.selectgroup-input(type="checkbox", name="tags" value=tag._id)
+                                                        - }
+                                                        span.selectgroup-button
+                                                            | #{tag.title}
+                                                - }
+                            .form-group
+                                .form-label Download Image
+                                .custom-file
+                                    input.custom-file-input(type="file")
+                                    label.custom-file-label Choose file
+                .card-footer.text-right
+                    input(type="hidden" name="id" value=post._id)
+                    button.btn.btn-primary(type="submit") Save

@@ -1,0 +1,9 @@
+header
+    .header-section.container
+        nav.header-nav
+            ul.header-nav__ul
+            if categories
+                each category, index in categories
+                    li.header-nav__ul-li
+                        a.header-nav__ul-li--link(href="/category/" + category._id)
+                            | #{category.title}

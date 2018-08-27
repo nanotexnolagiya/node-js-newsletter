@@ -1,0 +1,52 @@
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        meta(http-equiv="Content-Language", content="en")
+        meta(name="msapplication-TileColor", content="#2d89ef")
+        meta(name="theme-color", content="#4188c9")
+        meta(name="apple-mobile-web-app-status-bar-style", content="black-translucent")
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name="mobile-web-app-capable", content="yes")
+        meta(name="HandheldFriendly", content="True")
+        meta(name="MobileOptimized", content="320")
+        link(rel="icon" href="admin/favicon.ico" type="image/x-icon")
+        link(rel="shortcut icon" type="image/x-icon" href="admin/favicon.ico")
+        title Login
+        link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext")
+        link(rel="stylesheet", href="admin/css/dashboard.css")
+
+    body
+        .page
+            .page-single
+                .container
+                    .row
+                        .col.col-login.mx-auto
+                            .text-center.mb-6
+                                img.h-6(src="admin/images/tabler.svg", alt="Logo")
+                            form.card(action="/login", method="post")
+                                .card-body.p-6
+                                    .card-title
+                                        | Login to your account
+                                    .form-group
+                                        label.form-label(for="email")
+                                            | Email address
+                                        input.form-control(class=errorEmail ? "is-invalid": "" type="email", id="email", name="email", placeholder="Enter email" required)
+                                        if errorEmail
+                                            .invalid-feedback
+                                                | #{errorEmail}
+                                    .form-group
+                                        label.form-label(for="password")
+                                            | Password
+                                        input.form-control(class=errorPassword ? "is-invalid": "" type="password", id="password", name="password", placeholder="Password" required)
+                                        if errorPassword
+                                            .invalid-feedback
+                                                | #{errorPassword}
+                                    if formError
+                                        .alert.alert-danger(role="alert")
+                                            | #{formError}
+                                    .form-footer
+                                        button#login-btn.btn.btn-primary.btn-block(type="submit")
+                                            | Sign In

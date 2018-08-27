@@ -1,0 +1,31 @@
+extends ../layout/base
+
+append vars
+    - title = 'All Posts'
+block content
+    .row.row-cards
+        .col-lg-12
+            .card
+                table.table.card-table.table-vcenter.table-products
+                    if posts
+                        each post, index in posts
+                            tr
+                                td
+                                    img.h-8(src="/admin/images/demo/products/apple-macbook-pro.jpg" alt="")
+                                td
+                                    | #{post.title}
+                                td.text-right.text-muted
+                                    - var date = new Date(post.updatedAt);
+                                    - var mm = date.getMonth() + 1;
+                                    - var dd = date.getDate();
+                                    if mm < 10
+                                        - mm = '0' + mm
+                                    if dd < 10
+                                        - dd = '0' + dd
+                                    | #{dd}-#{mm}-#{date.getFullYear()}
+                                td.text-right
+                                    a.btn.btn-outline-warning(href="/admin/posts/edit/" + post._id)
+                                        i.fa.fa-edit
+                                td.text-right
+                                    a.deleteCategory.btn.btn-outline-danger(href="#", data-id=post._id)
+                                        i.fa.fa-trash

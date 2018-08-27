@@ -1,0 +1,41 @@
+extends ../layout/base
+
+append vars
+    - title = 'New Post'
+block content
+    .row
+        .col-md-8.offset-md-2
+            form#addPost.card(action="/admin/posts/add", method="post", enctype="multipart/form-data")
+                .card-header
+                    h3.card-title #{title}
+                .card-body
+                    .row
+                        .col-12
+                            .form-group
+                                label.form-label
+                                    | Title
+                                    span.form-required *
+                                input.form-control(type="text", name="title")
+                                .invalid-feedback
+                            .form-group
+                                .form-label
+                                    | Content
+                                .editable.form-control#content
+                                .invalid-feedback
+                            .form-group
+                                label.form-label
+                                    | Categories
+                                    span.form-required *
+                                select#selectCategory.custom-select.form-control(name="category")
+                                    each category, index in categories
+                                        option(value=category._id) #{category.title}
+                            .form-group
+                                label.form-label Select Tags
+                                #tags.selectgroup.selectgroup-pills
+                            .form-group
+                                .form-label Download Image
+                                .custom-file
+                                    input.custom-file-input(type="file")
+                                    label.custom-file-label Choose file
+                .card-footer.text-right
+                    button.btn.btn-primary(type="submit") Save

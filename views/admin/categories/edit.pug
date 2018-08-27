@@ -1,0 +1,22 @@
+extends ../layout/base
+
+append vars
+    - title = 'Edit Category'
+block content
+    .row
+        .col-md-8.offset-md-2
+            form#editCategory.card(action="/admin/posts/edit", method="post")
+                .card-header
+                    h3.card-title #{title}
+                .card-body
+                    .row
+                        .col-12
+                            .form-group
+                                label.form-label
+                                    | Title
+                                    span.form-required *
+                                input.form-control(type="text", name="title" value=category.title)
+                                input(type="hidden" name="id" value=category._id)
+                                .invalid-feedback
+                .card-footer.text-right
+                    button.btn.btn-primary(type="submit") Update

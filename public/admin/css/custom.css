@@ -1,0 +1,15 @@
+.header .dropdown-menu {
+  position: absolute;
+  transform: translate3d(12px, 55px, 0px);
+  top: 0px;
+  left: 0px;
+  will-change: transform;
+}
+
+.header .d-flex .dropdown-menu {
+  transform: translate3d(-56px, 32px, 0px);
+}
+
+.editable {
+  min-height: 200px;
+}

@@ -1,0 +1,35 @@
+extends ../layout/base
+
+append vars
+    - title = 'All Tags'
+block content
+    .row.row-cards
+        .col-lg-12
+            .card
+                table.table.card-table.table-vcenter.table-products
+                    tr
+                        th Tag
+                        th Category
+                        th Date
+                        th.text-right(colspan="2") Actions
+                    each tag, index in tags
+                        tr
+                            td
+                                | #{tag.title}
+                            td
+                                | #{tag.category.title}
+                            td
+                                - var date = new Date(tag.updatedAt);
+                                - var mm = date.getMonth() + 1;
+                                - var dd = date.getDate();
+                                if mm < 10
+                                    - mm = '0' + mm
+                                if dd < 10
+                                    - dd = '0' + dd
+                                | #{dd}-#{mm}-#{date.getFullYear()}
+                            td.text-right
+                                a.btn.btn-outline-warning(href="/admin/tags/edit/" + tag._id)
+                                    i.fa.fa-edit
+                            td.text-right
+                                a.deleteTag.btn.btn-outline-danger(href="#" data-id=tag._id)
+                                    i.fa.fa-trash

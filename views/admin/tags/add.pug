@@ -1,0 +1,28 @@
+extends ../layout/base
+
+append vars
+    - title = 'New Tag'
+block content
+    .row
+        .col-md-8.offset-md-2
+            form#addTag.card(action="/admin/posts/add", method="post")
+                .card-header
+                    h3.card-title #{title}
+                .card-body
+                    .row
+                        .col-12
+                            .form-group
+                                label.form-label
+                                    | Title
+                                    span.form-required *
+                                input.form-control(type="text", name="title")
+                                .invalid-feedback
+                            .form-group
+                                label.form-label
+                                    | Categories
+                                    span.form-required *
+                                select.custom-select.form-control(name="category")
+                                    each category, index in categories
+                                        option(value=category._id) #{category.title}
+                .card-footer.text-right
+                    button.btn.btn-primary(type="submit") Save

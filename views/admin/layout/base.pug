@@ -1,0 +1,130 @@
+block vars
+    - var baseDir = '/'
+    - var title = typeof title !== 'undefined' ? title : null
+    - var admin_active = ''
+    - var post_active = ''
+    - var category_active = ''
+    - var tag_active = ''
+    case alias
+        when 'admin'
+            - admin_active = 'active'
+        when 'post'
+            - post_active = 'active'
+        when 'category'
+            - category_active = 'active'
+        when 'tag'
+            - tag_active = 'active'
+doctype html
+html(lang="en" dir="ltr")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        meta(http-equiv="Content-Language" content="en")
+        meta(name="msapplication-TileColor" content="#2d89ef")
+        meta(name="theme-color" content="#4188c9")
+        meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+        meta(name="apple-mobile-web-app-capable" content="yes")
+        meta(name="mobile-web-app-capable" content="yes")
+        meta(name="HandheldFriendly" content="True")
+        meta(name="MobileOptimized" content="320")
+        link(rel="icon" href="/admin/favicon.ico" type="image/x-icon")
+        link(rel="shortcut icon" type="image/x-icon" href="/admin/favicon.ico")
+        if title !== null
+            title= title
+        link(rel="stylesheet" href="/admin/plugins/font-awesome/css/font-awesome.min.css")
+        link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&subset=latin-ext")
+        link(href="/admin/plugins/medium-editor/medium-editor.css" rel="stylesheet")
+        link(href="/admin/plugins/medium-editor/themes/bootstrap.css" rel="stylesheet")
+        link(href="/admin/plugins/sweetalert2/sweetalert2.min.css" rel="stylesheet")
+        link(href="/admin/css/dashboard.css" rel="stylesheet")
+        link(href="/admin/css/custom.css" rel="stylesheet")
+    body
+        .page
+            .page-main
+                .header.py-4
+                    .container
+                        .d-flex
+                            a.header-brand(href="/admin")
+                                img.header-brand-img(src="/admin/images/tabler.svg" alt="tabler logo")
+                            .d-flex.order-lg-2.ml-auto
+                                .dropdown
+                                    a.nav-link.pr-0.leading-none(href="#" data-toggle="dropdown")
+                                        span.avatar(style="background-image: url(/admin/images/demo/faces/female/25.jpg)")
+                                        span.ml-2.d-none.d-lg-block
+                                            span.text-default #{user.name}
+                                            small.text-muted.d-block.mt-1 Administrator
+                                    .dropdown-menu.dropdown-menu-right.dropdown-menu-arrow
+                                        a.dropdown-item(href="#")
+                                            i.dropdown-icon.fe.fe-user
+                                            |  Profile
+                                        .dropdown-divider
+                                        a.dropdown-item(href="/logout")
+                                            i.dropdown-icon.fe.fe-log-out
+                                            |  Sign out
+                            a.header-toggler.d-lg-none.ml-3.ml-lg-0(href="#" data-toggle="collapse" data-target="#headerMenuCollapse")
+                                span.header-toggler-icon
+                #headerMenuCollapse.header.collapse.d-lg-flex.p-0
+                    .container
+                        .row.align-items-center
+                            .col-lg-3.ml-auto
+                                form.input-icon.my-3.my-lg-0
+                                    input.form-control.header-search(type="search" placeholder="Search…" tabindex="1")
+                                    .input-icon-addon
+                                        i.fe.fe-search
+                            .col-lg.order-lg-first
+                                ul.nav.nav-tabs.border-0.flex-column.flex-lg-row
+                                    li.nav-item
+                                        a.nav-link(href="/admin", class=admin_active)
+                                            i.fe.fe-home
+                                            |  Home
+                                    //- li.nav-item
+                                    //- 	a.nav-link(href="javascript:void(0)" data-toggle="dropdown")
+                                    //- 		i.fe.fe-box
+                                    //- 		|  Interface
+                                    //- 	.dropdown-menu.dropdown-menu-arrow
+                                    //- 		a.dropdown-item(href="./cards.html") Cards design
+                                    //- 		a.dropdown-item(href="./charts.html") Charts
+                                    //- 		a.dropdown-item(href="./pricing-cards.html") Pricing cards
+                                    li.nav-item.dropdown
+                                        a.nav-link(href="javascript:void(0)", class=post_active, data-toggle="dropdown")
+                                            i.fe.fe-calendar
+                                            |  Post
+                                        .dropdown-menu.dropdown-menu-arrow
+                                            a.dropdown-item(href="/admin/posts/") All Posts
+                                            a.dropdown-item(href="/admin/posts/add") Add Post
+                                    li.nav-item.dropdown
+                                        a.nav-link(href="javascript:void(0)", class=category_active, data-toggle="dropdown")
+                                            i.fe.fe-calendar
+                                            |  Category
+                                        .dropdown-menu.dropdown-menu-arrow
+                                            a.dropdown-item(href="/admin/categories/") All Categories
+                                            a.dropdown-item(href="/admin/categories/add") Add Category
+                                    li.nav-item.dropdown
+                                        a.nav-link(href="javascript:void(0)" class=tag_active data-toggle="dropdown")
+                                            i.fe.fe-calendar
+                                            |  Tag
+                                        .dropdown-menu.dropdown-menu-arrow
+                                            a.dropdown-item(href="/admin/tags/") All Tags
+                                            a.dropdown-item(href="/admin/tags/add") Add Tag
+                .my-3.my-md-5
+                    .container
+                        .page-header
+                            h1.page-title
+                                if title !== null
+                                    | #{title}
+                        block content
+            footer.footer
+                .container
+                    .row.align-items-center.flex-row-reverse
+                        .col-auto.ml-lg-auto
+                            .row.align-items-center
+                                .col-auto
+                                    a.btn.btn-outline-primary.btn-sm(href="https://github.com/nanotexnolagiya/nodejs-blog") Source code
+                        .col-12.col-lg-auto.mt-3.mt-lg-0.text-center
+                            | Copyright © 2018 &nbsp;
+                            | All rights reserved.
+        script(src="/admin/plugins/jquery/jquery.min.js")
+        script(src="/admin/plugins/medium-editor/medium-editor.js")
+        script(src="/admin/plugins/sweetalert2/sweetalert2.min.js")
+        script(src="/admin/js/custom.js")

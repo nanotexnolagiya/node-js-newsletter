@@ -1,0 +1,32 @@
+extends ../layout/base
+
+append vars
+    - title = 'All Categories'
+block content
+    .row.row-cards
+        .col-lg-12
+            .card
+                table.table.card-table.table-vcenter.table-products
+                    tr
+                        th Title
+                        th Date
+                        th.text-right(colspan="2") Actions
+                    each category, index in categories
+                        tr
+                            td
+                                | #{category.title}
+                            td
+                                - var date = new Date(category.updatedAt);
+                                - var mm = date.getMonth() + 1;
+                                - var dd = date.getDate();
+                                if mm < 10
+                                    - mm = '0' + mm
+                                if dd < 10
+                                    - dd = '0' + dd
+                                | #{dd}-#{mm}-#{date.getFullYear()}
+                            td.text-right
+                                a.btn.btn-outline-warning(href="/admin/categories/edit/" + category._id)
+                                    i.fa.fa-edit
+                            td.text-right
+                                a.deleteCategory.btn.btn-outline-danger(href="#", data-id=category._id)
+                                    i.fa.fa-trash
