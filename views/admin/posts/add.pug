@@ -5,7 +5,7 @@ append vars
 block content
     .row
         .col-md-8.offset-md-2
-            form#addPost.card(action="/admin/posts/add", method="post", enctype="multipart/form-data")
+            form#addPost.card.post-form(action="/admin/posts/add", method="post", enctype="multipart/form-data")
                 .card-header
                     h3.card-title #{title}
                 .card-body
@@ -32,10 +32,14 @@ block content
                             .form-group
                                 label.form-label Select Tags
                                 #tags.selectgroup.selectgroup-pills
-                            .form-group
-                                .form-label Download Image
-                                .custom-file
-                                    input.custom-file-input(type="file")
-                                    label.custom-file-label Choose file
+                    #loadImage
+                        .row
+                            .col-12
+                                .form-group
+                                    .form-label Download Image
+                                    .custom-file
+                                        input.custom-file-input(type="file", name="file")
+                                        label.custom-file-label Choose file
+                    .row.upload-images
                 .card-footer.text-right
                     button.btn.btn-primary(type="submit") Save

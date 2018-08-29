@@ -1,31 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const path = require('path');
+const UploadController = require('../../controllers/admin/upload');
 
-const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, 'uploads');
-  },
-  filename: (req, file, callback) => {
-    callback(null, Date.now() + path.extname(file.originalname));
-  }
-});
 
-const upload = multer({
-    storage,
-    limits: {
-        fieldSize: 2 * 1024 * 1024
-    },
-    fileFilter: (req, fule, callback) => {
-        const ext = path.extname(file.originalname);
+router.post('/image', UploadController.image);
 
-        if(ext !== ',jpg' || ext !== '.jpeg' || ext !== '.png' || ext !== '.gif'){
-            
-        }
-    }
-});
-
-router.post('/image', (req, res) => {});
+router.delete('/delete', UploadController.deleted);
 
 module.exports = router;

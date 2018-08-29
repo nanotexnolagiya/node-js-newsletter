@@ -5,7 +5,7 @@ append vars
 block content
     .row
         .col-md-8.offset-md-2
-            form#editPost.card(action="/admin/posts/edit", method="post", enctype="multipart/form-data")
+            form#editPost.card.post-form(action="/admin/posts/edit", method="post", enctype="multipart/form-data")
                 .card-header
                     h3.card-title #{title}
                 .card-body
@@ -21,7 +21,7 @@ block content
                                 .form-label
                                     | Content
                                 .editable.form-control#content
-                                    | #{post.content}
+                                    | !{content}
                                 .invalid-feedback
                             .form-group
                                 label.form-label
@@ -47,7 +47,7 @@ block content
                                                             - attr = 'checked'
                                                         - }
                                                     
-                                                    label.selectgroup-item(for="")
+                                                    label.selectgroup-item
                                                         - if(attr.length > 1) {
                                                             input.selectgroup-input(type="checkbox", name="tags" value=tag._id, checked)
                                                         - }else{
@@ -56,11 +56,21 @@ block content
                                                         span.selectgroup-button
                                                             | #{tag.title}
                                                 - }
-                            .form-group
-                                .form-label Download Image
-                                .custom-file
-                                    input.custom-file-input(type="file")
-                                    label.custom-file-label Choose file
+                    #loadImage
+                        .row
+                            .col-12
+                                .form-group
+                                    .form-label Download Image
+                                    .custom-file
+                                        input.custom-file-input(type="file", name="file")
+                                        label.custom-file-label Choose file
+                    .row.upload-images
+                        if post.uploads
+                            each image, index in post.uploads
+                                .col-3
+                                    .upload-imagesItem(style="background-image: url(/uploads/" + image.path + ");")
+                                        .upload-imagesItem__remove.remove-image(data-path=image.path)
+                                    input(type="hidden" name="imageId" value=image._id)
                 .card-footer.text-right
                     input(type="hidden" name="id" value=post._id)
                     button.btn.btn-primary(type="submit") Save

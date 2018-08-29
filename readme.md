@@ -17,5 +17,5 @@
 ## Demo Admin Panel Password
 ```
     email = admin@admin.uz
-    password = pageup16
+    password = pageup18
 ```

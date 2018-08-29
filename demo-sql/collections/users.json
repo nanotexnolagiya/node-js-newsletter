@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5b541fb50c76910e385f74a6"},"token":"","name":"Admin","email":"admin@admin.uz","password":"$2a$10$yhIHQkFRLVMTyNkXlrC8puStdxzJogXGMauXh2C9xD3sCk15nisbC","createdAt":{"$date":"2018-07-22T06:09:57.667Z"},"updatedAt":{"$date":"2018-07-22T06:09:57.667Z"},"__v":0}

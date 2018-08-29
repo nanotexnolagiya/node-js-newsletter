@@ -1,15 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const AuthController = require('../../controllers/admin/auth');
 
-router.get('/', function(req, res) {
-  if (req.session) {
-    // delete session object
-    req.session.destroy(() => {
-      res.redirect('/admin');
-    });
-  } else {
-    res.redirect('/admin');
-  }
-});
+router.get('/', AuthController.logout);
 
 module.exports = router;

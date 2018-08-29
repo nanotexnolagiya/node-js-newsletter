@@ -3,4 +3,5 @@ node_modules/
 .idea/
 .DS_Store/
 .env
+uploads/
 package-lock.json

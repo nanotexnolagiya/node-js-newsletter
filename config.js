@@ -9,11 +9,6 @@ module.exports = {
   MONGO_URL: process.env.MONGO_URL,
   SESSION_SECRET: process.env.SESSION_SECRET,
   IS_PRODUCTION: process.env.NODE_ENV === 'production',
-  SMTP: {
-    HOST: process.env.SMTP_HOST,
-    PORT: process.env.SMTP_PORT,
-    SECURE: process.env.SMTP_SECURE,
-    USERNAME: process.env.SMTP_USERNAME,
-    PASSWORD: process.env.SMTP_PASSWORD
-  }
+  DESTINATION: process.env.DESTINATION || 'uploads',
+  UPLOADS_ROUTE: process.env.UPLOADS_ROUTE || 'uploads',
 };

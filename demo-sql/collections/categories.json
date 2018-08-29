@@ -1,0 +1,7 @@
+{"_id":{"$oid":"5b7d091ebd22da33b4a6a5af"},"title":"Начинающим","createdAt":{"$date":"2018-08-22T06:56:30.036Z"},"updatedAt":{"$date":"2018-08-22T06:56:30.036Z"},"__v":0}
+{"_id":{"$oid":"5b7d0939bd22da33b4a6a5b0"},"title":"Администрирование","createdAt":{"$date":"2018-08-22T06:56:57.055Z"},"updatedAt":{"$date":"2018-08-22T06:56:57.055Z"},"__v":0}
+{"_id":{"$oid":"5b7d094ebd22da33b4a6a5b1"},"title":"Web","createdAt":{"$date":"2018-08-22T06:57:18.729Z"},"updatedAt":{"$date":"2018-08-22T06:57:18.729Z"},"__v":0}
+{"_id":{"$oid":"5b7d0958bd22da33b4a6a5b2"},"title":"Базы данных","createdAt":{"$date":"2018-08-22T06:57:28.495Z"},"updatedAt":{"$date":"2018-08-22T06:57:28.495Z"},"__v":0}
+{"_id":{"$oid":"5b7d096dbd22da33b4a6a5b3"},"title":"JavaScript","createdAt":{"$date":"2018-08-22T06:57:49.592Z"},"updatedAt":{"$date":"2018-08-22T06:57:49.592Z"},"__v":0}
+{"_id":{"$oid":"5b7d097abd22da33b4a6a5b4"},"title":"Python","createdAt":{"$date":"2018-08-22T06:58:02.801Z"},"updatedAt":{"$date":"2018-08-22T06:58:02.801Z"},"__v":0}
+{"_id":{"$oid":"5b7d0987bd22da33b4a6a5b5"},"title":"Java","createdAt":{"$date":"2018-08-22T06:58:15.403Z"},"updatedAt":{"$date":"2018-08-22T06:58:15.403Z"},"__v":0}

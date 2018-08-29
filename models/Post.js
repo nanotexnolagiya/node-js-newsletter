@@ -17,11 +17,12 @@ const schema = new Schema(
       ref: 'Category'
     },
     tags: {
-      type: Array
+      type: [Schema.Types.ObjectId],
+      ref: 'Tag'
     },
     uploads: [
       {
-        type: Schema.Types.ObjectId,
+        type: [Schema.Types.ObjectId],
         ref: 'Upload'
       }
     ],

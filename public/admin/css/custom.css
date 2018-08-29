@@ -13,3 +13,43 @@
 .editable {
   min-height: 200px;
 }
+
+.custom-file-input.is-invalid ~ .invalid-feedback{
+  display: block;
+}
+
+.upload-images .upload-imagesItem {
+  position: relative;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.upload-images .upload-imagesItem:hover .upload-imagesItem__remove {
+  display: block;
+}
+
+.upload-images .upload-imagesItem .upload-imagesItem__remove {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.upload-images .upload-imagesItem .upload-imagesItem__remove::after {
+  content: "\f00d";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  color: #fff;
+  font-size: 50px;
+  transform: translate3d(-50%, -50%, 0);
+
+}
