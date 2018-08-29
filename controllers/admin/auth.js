@@ -5,7 +5,7 @@ const logger = require('../../lib/logger');
 const User = require('../../models/User');
 
 const login = async (req, res) => {
-    let errors = {};
+  let errors = {};
   const email = req.body.email;
   const password = req.body.password;
   if (!email || !password) {

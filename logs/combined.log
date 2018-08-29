@@ -1,0 +1,40 @@
+{ message: 'Example app listening on port 3000!',
+  level: 'info',
+  timestamp: '2018-08-29T16:45:09.808Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Connected to localhost:27017/auth',
+  level: 'info',
+  timestamp: '2018-08-29T16:45:09.833Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Example app listening on port 3000!',
+  level: 'info',
+  timestamp: '2018-08-29T17:00:38.184Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Connected to localhost:27017/auth',
+  level: 'info',
+  timestamp: '2018-08-29T17:00:38.222Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Example app listening on port 3000!',
+  level: 'info',
+  timestamp: '2018-08-29T17:01:07.047Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Connected to localhost:27017/auth',
+  level: 'info',
+  timestamp: '2018-08-29T17:01:07.083Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Example app listening on port 3000!',
+  level: 'info',
+  timestamp: '2018-08-29T17:05:20.359Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Connected to localhost:27017/auth',
+  level: 'info',
+  timestamp: '2018-08-29T17:05:20.398Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Example app listening on port 3000!',
+  level: 'info',
+  timestamp: '2018-08-29T17:05:43.360Z',
+  [Symbol(level)]: 'info' }
+{ message: 'Connected to localhost:27017/auth',
+  level: 'info',
+  timestamp: '2018-08-29T17:05:43.595Z',
+  [Symbol(level)]: 'info' }
