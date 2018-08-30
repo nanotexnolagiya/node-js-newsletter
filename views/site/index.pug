@@ -13,204 +13,69 @@ block content
 	.main
 		.container
 			include layout/partials/home-slider
-			section.category-section
-				.section-title
-					.section-title__text
-						| Начинающим
-				.posts
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Тест: какой язык программирования вам стоит выбрать для изучения?
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Новичкам бывает сложно разобраться в том, с какого языка программирования стоит начать. У каждого инструмента есть своя специализация, каждый язык лучше подходит для своих задач.
-						.postsItem__image(style="background-image: url(images/posts/juniors/j1.jpg);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Подборка онлайн-ресурсов для тех, кто хочет научиться программировать
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Итак, вы решили научиться программировать. Вы слышали что-то о Swift, сидя поздно вечером в кафе, ваши друзья шепчутся о Node.js
-						.postsItem__image(style="background-image: url(images/posts/juniors/j2.png);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Хочу стать frontend разработчиком
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Это всегда интересная и востребованная работа на стыке интеллекта и творчества, работа о том, как принести пользу людям, сделать мир чуточку лучше. Возможности реализации в ней бесконечны.
-						.postsItem__image(style="background-image: url(images/posts/juniors/j3.png);")
-						a.postsItem__link(href=defaultLink)
+			if categories
+				each category, index in categories
+					if index != 0 
+						- continue
+					section.category-section
+						.section-title
+							.section-title__text
+								| #{category.title}
+						.posts
+							each post, index in posts
+								if post.category._id.toString() == category._id.toString()
+									.postsItem
+										.postsItem__content
+											.postsItem__title
+												| #{post.title}
+											.postsItem__author
+												| Админ
+											.postsItem__lead
+												| #{post.content}
+										.postsItem__image(style="background-image: url(/uploads" + post.uploads[0].path + ");")
+										a.postsItem__link(href="/post/" + post.url)
 			section.latest-section
 				.section-title
 						.section-title__text
 							| Последние новости
 				.latest-posts
-					.latest-posts-column
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Новичкам бывает сложно разобраться в том, с какого языка программирования стоит начать. У каждого инструмента есть своя специализация, каждый язык лучше подходит для своих задач.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-						.latest-postsItem
-							.latest-postsItem__lead
-								| В этот раз разберёмся, как можно заменить все одинаковые подстроки в конкретной строке.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-					.latest-posts-column
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Итак, вы решили научиться программировать. Вы слышали что-то о Swift, сидя поздно вечером в кафе, ваши друзья шепчутся о Node.js
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Задавались ли вы когда-нибудь вопросом, возможно ли создавать кроссплатформенные настольные приложения на HTML, CSS и JavaScript?
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-					.latest-posts-column
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Это всегда интересная и востребованная работа на стыке интеллекта и творчества, работа о том, как принести пользу людям, сделать мир чуточку лучше. Возможности реализации в ней бесконечны.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Недавно были опубликованы результаты опроса 23 000 JavaScript-программистов за 2017 год. Они показали много разного и интересного от трендов до окладов.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-					.latest-posts-column
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Писать на Python, используя IDE или Python Shell, вполне удобно, если речь идёт о простых вещах, однако с ростом размеров проектов программирование превращается в мучение.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-						.latest-postsItem
-							.latest-postsItem__lead
-								| Каждое значение в Python имеет тип. Поскольку всё в Python — объекты, типы являются классами, а значения — экземплярами (объектами) этих классов.
-							.latest-postsItem__date
-								| 12.07.2018
-							a.latest-postsItem__link(href=defaultLink)
-			section.category-section
-				.section-title
-					.section-title__text
-						| JavaScript
-				.posts
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| 10 трендов JavaScript на 2018 год
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Недавно были опубликованы результаты опроса 23 000 JavaScript-программистов за 2017 год. Они показали много разного и интересного от трендов до окладов.
-						.postsItem__image(style="background-image: url(images/posts/js/js1.png);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Пишем настольное JS-приложение с Electron
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Задавались ли вы когда-нибудь вопросом, возможно ли создавать кроссплатформенные настольные приложения на HTML, CSS и JavaScript?
-						.postsItem__image(style="background-image: url(images/posts/js/js2.jpg);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Как заменить все одинаковые подстроки в строке на JavaScript
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| В этот раз разберёмся, как можно заменить все одинаковые подстроки в конкретной строке.
-						.postsItem__image(style="background-image: url(images/posts/js/js3.png);")
-						a.postsItem__link(href=defaultLink)
-			section.category-section.border-none
-				.section-title
-					.section-title__text
-						| Python
-				.posts
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Лучшие IDE и редакторы кода для Python
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Писать на Python, используя IDE или Python Shell, вполне удобно, если речь идёт о простых вещах, однако с ростом размеров проектов программирование превращается в мучение.
-						.postsItem__image(style="background-image: url(images/posts/python/p1.jpg);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Основные типы данных в Python для начинающих
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Каждое значение в Python имеет тип. Поскольку всё в Python — объекты, типы являются классами, а значения — экземплярами (объектами) этих классов.
-						.postsItem__image(style="background-image: url(images/posts/python/p2.png);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Задачка на Python: расшифруйте строку
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Ссылка на оригинал задачи: http://www.pythonchallenge.com/pc/def/map.html. Обратите на неё внимание, она нам ещё пригодится.
-						.postsItem__image(style="background-image: url(images/posts/python/p3.png);")
-						a.postsItem__link(href=defaultLink)
+					- for(var l = 0; l < 4; l++) {
+						- lat = 0
+						.latest-posts-column
+							- lat = l * 2
+							each latestPost, index in latestPosts
+								if (lat <= index && index < (lat + 2))
+									.latest-postsItem
+										.latest-postsItem__lead
+											| #{latestPost.title}
+										.latest-postsItem__date
+											| #{latestPost.date}
+										a.latest-postsItem__link(href="/post/" + latestPost.url)
+					- }
+			if categories
+				each category, index in categories
+					- var noPost = true
+					each post, index in posts
+						if post.category._id.toString() == category._id.toString()
+							- noPost = false
+					if index == 0 || noPost
+						- continue
+					section.category-section
+						.section-title
+							.section-title__text
+								| #{category.title}
+						.posts
+							each post, index in posts
+								if post.category._id.toString() == category._id.toString()
+									.postsItem
+										.postsItem__content
+											.postsItem__title
+												| #{post.title}
+											.postsItem__author
+												| Админ
+											.postsItem__lead
+												| #{post.content}
+										.postsItem__image(style="background-image: url(/uploads" + post.uploads[0].path + ");")
+										a.postsItem__link(href="/post/" + post.url)
 			include layout/partials/footer
-	.tablet-burger
-		button.hamburger.hamburger--emphatic(type='button')
-			span.hamburger-box
-				span.hamburger-inner
-	.mobile-burger
-		button.hamburger.hamburger--emphatic(type='button')
-			span.hamburger-box
-				span.hamburger-inner
-			| Меню
-	.mobile-burger
-		button.hamburger.hamburger--emphatic(type='button')
-			span.hamburger-box
-				span.hamburger-inner
-			| Меню
-	.responsive-menu
-		nav.responsive-nav
-			ul.responsive-nav__ul
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Начинающим
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Администрирование
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Web
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Базы данных
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| JavaScript
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Python
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Java
+	include layout/partials/responsive-menu

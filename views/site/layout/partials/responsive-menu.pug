@@ -1,0 +1,17 @@
+.tablet-burger
+    button.hamburger.hamburger--emphatic(type='button')
+        span.hamburger-box
+            span.hamburger-inner
+.mobile-burger
+    button.hamburger.hamburger--emphatic(type='button')
+        span.hamburger-box
+            span.hamburger-inner
+        | Меню
+.responsive-menu
+    nav.responsive-nav
+        ul.responsive-nav__ul
+            if categories
+                each category, index in categories
+                    li.responsive-nav__ul-li
+                        a.responsive-nav__ul-li--link(href="/category/" + category._id)
+                            | #{category.title}

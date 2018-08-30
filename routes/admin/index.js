@@ -6,26 +6,37 @@ const tags = require('./tags');
 const upload = require('./upload');
 const alias = 'admin';
 
-router.get('/', function(req, res) {
-  const { userId, userName } = req.session;
+router.get('/', function (req, res) {
+	const {
+		userId,
+		userName
+	} = req.session;
 
-  if (!userId || !userName) {
-    res.redirect('/login');
-    return;
-  }
+	if (!userId || !userName) {
+		res.redirect('/login');
+		return;
+	}
 
-  res.render('admin/index', {
-    user: {
-      id: userId,
-      name: userName
-    },
-    alias
-  });
+	res.render('admin/index', {
+		user: {
+			id: userId,
+			name: userName,
+		},
+		alias,
+	});
 });
 
 router.use('/posts', posts);
 router.use('/categories', categories);
 router.use('/tags', tags);
 router.use('/upload', upload);
+
+// router.use('/profile', async (req, res) => {
+
+// });
+
+// router.use('/media', async (req, res) => {
+
+// });
 
 module.exports = router;

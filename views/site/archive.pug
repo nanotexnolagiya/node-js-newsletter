@@ -1,7 +1,7 @@
 extends layout/base
 
 append vars
-	- title = 'Python'
+	- title = cat.title
 	- description = 'Описание'
 	- body.classList = ['inner-page']
 block content
@@ -17,117 +17,25 @@ block content
 				.page-title__text
 					| #{title}
 			.page-submenu
-				.page-submenuItem
-					a.page-submenuItem__link(href=defaultLink)
-						| Django
-				.page-submenuItem
-					a.page-submenuItem__link(href=defaultLink)
-						| Flask
-				.page-submenuItem
-					a.page-submenuItem__link(href=defaultLink)
-						| PIP
-				.page-submenuItem
-					a.page-submenuItem__link(href=defaultLink)
-						| PyUnit
-				.page-submenuItem
-					a.page-submenuItem__link(href=defaultLink)
-						| Celery
+				if tags
+					each tag, index in tags
+						.page-submenuItem
+							a.page-submenuItem__link(href="/tag/" + tag._id)
+								| #{tag.title}
 	.main
 		.container
 			section.category-section.border-none
 				.posts
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Лучшие IDE и редакторы кода для Python
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Писать на Python, используя IDE или Python Shell, вполне удобно, если речь идёт о простых вещах, однако с ростом размеров проектов программирование превращается в мучение.
-						.postsItem__image(style="background-image: url(images/posts/python/p1.jpg);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Основные типы данных в Python для начинающих
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Каждое значение в Python имеет тип. Поскольку всё в Python — объекты, типы являются классами, а значения — экземплярами (объектами) этих классов.
-						.postsItem__image(style="background-image: url(images/posts/python/p2.png);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Задачка на Python: расшифруйте строку
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Ссылка на оригинал задачи: http://www.pythonchallenge.com/pc/def/map.html. Обратите на неё внимание, она нам ещё пригодится.
-						.postsItem__image(style="background-image: url(images/posts/python/p3.png);")
-						a.postsItem__link(href=defaultLink)
-				.posts
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Лучшие IDE и редакторы кода для Python
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Писать на Python, используя IDE или Python Shell, вполне удобно, если речь идёт о простых вещах, однако с ростом размеров проектов программирование превращается в мучение.
-						.postsItem__image(style="background-image: url(images/posts/python/p1.jpg);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Основные типы данных в Python для начинающих
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Каждое значение в Python имеет тип. Поскольку всё в Python — объекты, типы являются классами, а значения — экземплярами (объектами) этих классов.
-						.postsItem__image(style="background-image: url(images/posts/python/p2.png);")
-						a.postsItem__link(href=defaultLink)
-					.postsItem
-						.postsItem__content
-							.postsItem__title
-								| Задачка на Python: расшифруйте строку
-							.postsItem__author
-								| Админ
-							.postsItem__lead
-								| Ссылка на оригинал задачи: http://www.pythonchallenge.com/pc/def/map.html. Обратите на неё внимание, она нам ещё пригодится.
-						.postsItem__image(style="background-image: url(images/posts/python/p3.png);")
-						a.postsItem__link(href=defaultLink)
+					each catPost, index in catPosts
+						.postsItem
+							.postsItem__content
+								.postsItem__title
+									| #{catPost.title}
+								.postsItem__author
+									| Админ
+								.postsItem__lead
+									| #{catPost.title}
+							.postsItem__image(style="background-image: url(/uploads" + catPost.uploads[0].path + ");")
+							a.postsItem__link(href="/post/" + catPost.url)
 			include layout/partials/footer
-	.tablet-burger
-		button.hamburger.hamburger--emphatic(type='button')
-			span.hamburger-box
-				span.hamburger-inner
-	.mobile-burger
-		button.hamburger.hamburger--emphatic(type='button')
-			span.hamburger-box
-				span.hamburger-inner
-			| Меню
-	.responsive-menu
-		nav.responsive-nav
-			ul.responsive-nav__ul
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Начинающим
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Администрирование
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Web
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Базы данных
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| JavaScript
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Python
-				li.responsive-nav__ul-li
-					a.responsive-nav__ul-li--link(href=defaultLink)
-						| Java
+	include layout/partials/responsive-menu

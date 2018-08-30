@@ -1,0 +1,12 @@
+{ TypeError: posts.append is not a function
+    at category (/home/islomkhuja/Рабочий стол/node.js/news/controllers/site/index.js:75:19)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  level: 'error',
+  timestamp: '2018-08-30T08:54:17.522Z',
+  [Symbol(level)]: 'error' }
+{ TypeError: tempPosts.append is not a function
+    at category (/home/islomkhuja/Рабочий стол/node.js/news/controllers/site/index.js:75:23)
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+  level: 'error',
+  timestamp: '2018-08-30T08:55:01.677Z',
+  [Symbol(level)]: 'error' }

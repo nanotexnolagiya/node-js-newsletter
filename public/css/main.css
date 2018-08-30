@@ -4456,7 +4456,7 @@ header {
       -ms-flex-pack: center;
           justify-content: center;
   margin: 0 -15px; }
-  body.inner-page .posts {
+  body.inner-page .posts .postsItem {
     padding-bottom: 40px; }
   .postsItem {
     position: relative;
@@ -4772,11 +4772,12 @@ footer {
   body.inner-page.single-page .page-title-wrap {
     background-color: #fff; }
   .page-title-wrap .page-title {
-    height: 305px;
+    height: 215px;
+    margin-top: 40px;
     overflow: hidden;
     white-space: nowrap; }
     .page-title-wrap .page-title__text {
-      font: 352px "ReformaMedium", Arial, sans-serif;
+      font: 222px "ReformaMedium", Arial, sans-serif;
       text-transform: uppercase;
       text-align: center;
       -webkit-user-select: none;
@@ -5281,6 +5282,7 @@ footer {
   width: 75%;
   margin: 0 auto;
   padding-bottom: 40px;
+  text-align: center;
   font: 18px "ConquerorSlab", serif;
   line-height: 24px; }
   .default-section img {
@@ -5359,6 +5361,7 @@ section {
     background: transparent; }
 
 .mobile-burger {
+  display: none;
   position: fixed;
   bottom: 0;
   z-index: 15;

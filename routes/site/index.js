@@ -1,21 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const Tag = require('../../models/Tag');
-const Category = require('../../models/Category');
-const Post = require('../../models/Post');
-const TurndownService = require('turndown');
-const turndownService = new TurndownService();
-const category = require('./category');
+const SiteController = require('../../controllers/site');
 
-router.get('/', async (req, res) => {
-    const tags = await Tag.find({});
-    const categories = await Category.find({});
+router.get('/', SiteController.homeAction);
 
-    res.render('site/index', {
-        categories
-    });
-});
+router.get('/category/:id', SiteController.categoryAction);
 
-router.use('/category', category);
+router.get('/post/:url', SiteController.postAction);
 
 module.exports = router;

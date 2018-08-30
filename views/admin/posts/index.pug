@@ -19,7 +19,8 @@ block content
                                 td
                                     img.h-8(src="/uploads" + post.uploads[0].path, alt="")
                                 td
-                                    | #{post.title}
+                                    a(href="/post/" + post.url)
+                                        | #{post.title}
                                 td
                                     | #{post.category.title}
                                 td.text-right.text-muted

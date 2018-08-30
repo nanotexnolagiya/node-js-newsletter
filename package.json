@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"/**/*.js\""
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"**/*.js\" \"!/public/**/*.js\" \"!**/node_modules/**\" \"!./node_modules/**\" \"!**/.{git,svn,hg}/**\" \"!./.{git,svn,hg}\""
   },
   "author": "Islomkhuja",
   "repository": {
