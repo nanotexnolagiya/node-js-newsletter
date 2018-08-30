@@ -7,12 +7,13 @@
 # Run
 
 ```
-    npm run dev or yarn dev
+    development: npm run dev or yarn dev
+    production: npm run start or yarn start
 ```
 
 # Admin Panel
 ```
-    localhost:3000/admin
+    YOUR_HOST:YOUR_PORT/admin
 ```
 ## Demo Admin Panel Password
 ```
